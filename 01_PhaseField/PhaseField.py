@@ -1,18 +1,6 @@
-# Phase field fracture implementation in FEniCS    
-# The code is distributed under a BSD license     
-      
-# If using this code for research or industrial purposes, please cite:
-# Hirshikesh, S. Natarajan, R. K. Annabattula, E. Martinez-Paneda.
-# Phase field modelling of crack propagation in functionally graded materials.
-# Composites Part B: Engineering 169, pp. 239-248 (2019)
-# doi: 10.1016/j.compositesb.2019.04.003
-      
-# Emilio Martinez-Paneda (mail@empaneda.com)
-# University of Cambridge
-
 from dolfin import *
 
-mesh = Mesh('/mnt/c/Users/User/GoogleDrive/INEGI/05_Study/01_PhaseField/mesh.xml')
+mesh = Mesh('mesh.xml')
 # Include whole the path for the file
 
 # Define Space
@@ -94,14 +82,14 @@ u_r = 0.007
 deltaT  = 0.1
 tol = 1e-3
 
-conc_f = File ("/mnt/c/Users/User/GoogleDrive/INEGI/05_Study/01_PhaseField/ResultsDir/phi.pvd")
-fname = open('/mnt/c/Users/User/GoogleDrive/INEGI/05_Study/01_PhaseField/ResultsDir/ForcevsDisp.txt', 'w')
+conc_f = File ("ResultsDir1/phi.pvd")
+fname = open('ResultsDir1/ForcevsDisp.txt', 'w')
 
 # Staggered scheme
 while t<=1.0:
     t += deltaT
     if t >=0.7:
-        deltaT = 0.0001
+        deltaT = 0.1
         
     load.t=t*u_r
     
