@@ -1,0 +1,12 @@
+/tmp/tmp7ux5rg3z/dolfin_expression_ba02e8d2309ddcfc0f4a3850ebba4689.cpp: In member function ‘virtual void dolfin::dolfin_expression_ba02e8d2309ddcfc0f4a3850ebba4689::eval(Eigen::Ref<Eigen::Matrix<double, -1, 1> >, Eigen::Ref<const Eigen::Matrix<double, -1, 1> >) const’:
+/tmp/tmp7ux5rg3z/dolfin_expression_ba02e8d2309ddcfc0f4a3850ebba4689.cpp:66:112: error: ‘d_z’ was not declared in this scope; did you mean ‘d_x’?
+   66 |           values[0] = 50*exp(-2*(pow((x[0]-t),2) + pow((x[1]-b*H),2) + pow((x[2]-b*H),2))/(d_x*d_x + d_y*d_y + d_z*d_z));
+      |                                                                                                                ^~~
+      |                                                                                                                d_x
+/tmp/tmp7ux5rg3z/dolfin_expression_ba02e8d2309ddcfc0f4a3850ebba4689.cpp: In member function ‘virtual double dolfin::dolfin_expression_ba02e8d2309ddcfc0f4a3850ebba4689::get_property(std::string) const’:
+/tmp/tmp7ux5rg3z/dolfin_expression_ba02e8d2309ddcfc0f4a3850ebba4689.cpp:78:11: warning: this ‘if’ clause does not guard... [-Wmisleading-indentation]
+   78 |           if (name == "b") return b;          if (name == "H") return H;          if (name == "d_x") return d_x;          if (name == "d_y") return d_y;          if (name == "t") return t;
+      |           ^~
+/tmp/tmp7ux5rg3z/dolfin_expression_ba02e8d2309ddcfc0f4a3850ebba4689.cpp:78:47: note: ...this statement, but the latter is misleadingly indented as if it were guarded by the ‘if’
+   78 |           if (name == "b") return b;          if (name == "H") return H;          if (name == "d_x") return d_x;          if (name == "d_y") return d_y;          if (name == "t") return t;
+      |                                               ^~

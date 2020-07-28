@@ -1,4 +1,4 @@
-from dolfin import *
+from fenics import *
 import numpy as np
 import matplotlib.pyplot as plt
 
@@ -54,6 +54,7 @@ nx = 20
 ny = 12
 
 mesh = RectangleMesh(Point(x0, y0), Point(x1, y1), nx, ny)
+coordinates = mesh.coordinates()
 ############################################################
 # print("Plotting a RectangleMesh")
 # plt.figure()
@@ -109,6 +110,9 @@ u = Function(V)
 
 conc_f = File ("ResultsDir/phi.pvd")
 
+t_plot = []
+v_plot = []
+
 for n in range (num_steps):
 
     t += dt
@@ -117,16 +121,38 @@ for n in range (num_steps):
     solve(a == L, u)
 
     # Compute the error at vertices
-    u_e = interpolate(u_D, V)
-    error = np.abs(u_e.vector().get_local() - u.vector().get_local()).max()
-    print('t = %.2f: error = %.3g' % (t, error))
+    # u_e = interpolate(u_D, V)
+    # error = np.abs(u_e.vector().get_local() - u.vector().get_local()).max()
+    # print('t = %.2f: error = %.3g' % (t, error))
 
+    plt.figure(1)
     plot(u)
+
+    nodal_values  = u.vector().get_local()
+    vertex_values = u.compute_vertex_values()
+
+    # print('t = %.2f:  Vertex_Value = %.2f' % (t, vertex_values[136]))
+    # print(vertex_values[136])
     
+    # for i, x in enumerate(coordinates):
+    #     print('vertex %d: vertex_values[%d] = %g\tu(%s) = %g' % (i, i, vertex_values[i], x, u(x)))
+
+    # print(type(t))
+    # print(type(vertex_values[136]))
+
+    t_plot.append(t)
+    v_plot.append(vertex_values[136])
+
     u_n.assign(u)
 
     conc_f << u
 
+plt.figure(2)
+plt.plot(t_plot, v_plot)
+plt.title('Vertex Value for (x=10, y=6)')
+plt.grid(True)
+
 plt.show()
+
     
 
