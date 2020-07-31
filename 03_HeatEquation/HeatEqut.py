@@ -30,6 +30,13 @@ top = Top()
 right = Right()
 bottom = Bottom()
 
+### Another way to do it
+
+# left = CompiledSubDomain("near(x[0], 0.0) && on_boundary")
+# top = CompiledSubDomain("near(x[1], 12.0) && on_boundary")
+# right = CompiledSubDomain("near(x[0], 20.0) && on_boundary")
+# bottom = CompiledSubDomain("near(x[1], 0.0) && on_boundary")
+
 ############################################################
 
 t = 0

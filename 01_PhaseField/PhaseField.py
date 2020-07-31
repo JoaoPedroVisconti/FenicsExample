@@ -1,4 +1,4 @@
-from dolfin import *
+from fenics import *
 
 mesh = Mesh('mesh.xml')
 # Include whole the path for the file
@@ -82,14 +82,14 @@ u_r = 0.007
 deltaT  = 0.1
 tol = 1e-3
 
-conc_f = File ("ResultsDir1/phi.pvd")
-fname = open('ResultsDir1/ForcevsDisp.txt', 'w')
+conc_f = File ("ResultsDir/phi.pvd")
+fname = open('ResultsDir/ForcevsDisp.txt', 'w')
 
 # Staggered scheme
 while t<=1.0:
     t += deltaT
     if t >=0.7:
-        deltaT = 0.1
+        deltaT = 0.05
         
     load.t=t*u_r
     

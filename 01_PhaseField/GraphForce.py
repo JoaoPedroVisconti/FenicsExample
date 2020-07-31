@@ -1,7 +1,7 @@
 import numpy as np
 import matplotlib.pyplot as plt
 
-file = np.loadtxt("ResultsDir1/ForcevsDisp.txt")
+file = np.loadtxt("ResultsDir/ForcevsDisp.txt")
 
 x, y = np.hsplit(file, 2)
 
